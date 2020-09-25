@@ -10,8 +10,8 @@ class FirstLab:
     def __init__(self):
         print("hi, this is my first python class")
 
+    def test(self):
+        print("hello, how are you?")
 
-fl = FirstLab()
-
-# uncomment the following line, play with it
-# print("I can print anywhere I like")
+f1 = FirstLab()
+f1.test()
