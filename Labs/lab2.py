@@ -18,28 +18,31 @@ class Types_and_Strings:
         #
 
         # print only first and last of the sentence:
-        testt = message[-1]
-        print(testt)
+        print("first character: " + message[0])
+        print("last character: " + message[-1])
 
         # use slice notation:
-        message1 = message[0:2]
-        print(message1)
+        print("print from position 3 to end: " + message[3:0])
+        print("print up to position 3: " + message[:3])
+
 
         # escaping a character:
         message2 = "O\'Brien"
         print(message2)
 
         # find all a's in the input word aaand count how many there are:
-        print(message.find('a'))
-        print(message.count('a',0,-1))
+        lower_message = message.lower()
+        print("all lower characters: " + lower_message)
+        print("the first ocurence of a is at position: ", lower_message.find('a'))
+        print("there are "+ str(lower_message.count('a')) + "a's in the word.")
+        print("total character count is: " +str(len(lower_message)))
 
 
         # replace all occurences of the character a with the - sign
         # try this first by assignment of a location in a string and
         # observe what happens, then use replace():
-        # message[0] = '-'
-        message3 = message.replace('a', '-')
-        print(message3)
+        # message[0] = '-'as
+        print(message.replace('a', '-'))
         
 
 
@@ -52,37 +55,32 @@ class Types_and_Strings:
         print(user_list)
 
         # append a new element to the list and print:
-        user_list.append("b")
-        user_list.append("c")
-        user_list.append("d")
-        user_list.append("e")
-        # user_list.append("cake")
+        user_list.append("new")
         print(user_list)
 
         # remove from the list in 3 ways:
-        # del user_list[0]
-        # del user_list[0:4]
-        # user_list.remove('a')  --> removes first ocurrence only 
-        # del user_list[2:]
-        # print(user_list)
+        # user_list.pop()
+        # user_list.remove("cake")
+        del user_list[-1]
+        print(user_list)
+        
 
         # check if the word cake is in your input list:
-        if 'cake' in user_list:
-            print("cake is in the list")
+        print('cake' in user_list)
 
         # reverse the items in the list and print:
-        user_list.reverse()
-        print(user_list)
+        # user_list.reverse()
+        # print(user_list)
 
-        # reverse the list with the slicing trick:
-        print(user_list[::-1])
-        print(user_list)
+        # # reverse the list with the slicing trick:
+        # print(user_list[::-1])
+        # print(user_list)
 
-        # print the list 3 times by using multiplication:
-        print(user_list*3)
+        # # print the list 3 times by using multiplication:
+        # print(user_list*3)
 
 
 
 tas = Types_and_Strings()
-tas.play_with_strings()
-# tas.play_with_lists()
+# tas.play_with_strings()
+tas.play_with_lists()
