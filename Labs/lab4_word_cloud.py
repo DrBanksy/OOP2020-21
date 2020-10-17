@@ -30,7 +30,16 @@ class WordCloud:
             <div style="text-align: center; vertical-align: middle; font-family: arial; color: white; background-color:black; border:1px solid black">')
 
         # your code goes here!
-        fo.write('<span style="font-size: 20px"> HELLO </span>')
+        for key, value in the_dict.items():
+            #tuple of stop words we want to disregard
+            stopwords_txt = open('Labs\\stopwords.txt', 'r')
+            stopwords = stopwords_txt.read().split('\n')
+            if key in stopwords:
+                count = 1*15
+                fo.write(f'<span style="font-size: {count}px"> {key} </span>')
+            else:
+                count = value*15
+                fo.write(f'<span style="font-size: {count}px"> {key} </span>')
 
         fo.write('</div>\
             </body>\
@@ -50,7 +59,17 @@ class WordCloud:
     def create_dict(self):
         my_dict = {}
         # your code goes here:
+        my_file = open('Labs\\gettisburg.txt', 'r')
+        lines = my_file.readlines()
 
+        for line in lines:
+            words = list(line.split())
+            for word in words:
+                my_dict = self.add_to_dict(word, my_dict)
+
+
+
+        my_file.close()
         return my_dict
 
     # helper function that is called from
@@ -61,9 +80,17 @@ class WordCloud:
     # word occurance counter to 1
     # returns a dictionary
     def add_to_dict(self, word, the_dict):
+        
         # your code goes here
+        if(word in the_dict):
+            the_dict[word] += 1
+        else:
+            the_dict[word] = 1
 
         return the_dict
 
 
 wc = WordCloud()
+
+
+
