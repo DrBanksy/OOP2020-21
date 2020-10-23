@@ -46,13 +46,13 @@ class CardGame():
 
         # add elements into the frames
         self.open_card = Button(cards_frame)
-        the_card = PhotoImage(file='cards/queen_hearts.gif')
+        the_card = PhotoImage(file=f'Labs\\cards\\{self.the_cards.get()}')
         self.open_card.config(image=the_card)
         self.open_card.grid(row=0, column=0, padx=2, pady=2)
         self.open_card.photo = the_card
 
         closed_deck = Button(cards_frame)
-        closed_card = PhotoImage(file='cards/closed_deck.gif')
+        closed_card = PhotoImage(file='Labs\\cards\\closed_deck.gif')
         closed_deck.config(image=closed_card)
         closed_deck.grid(row=0, column=1, padx=2, pady=2)
         closed_deck.photo = closed_card
@@ -84,10 +84,17 @@ class CardGame():
         card_list = []
 
         # your code goes here:
-
+        for suit in suits:
+            for v in range(1,11):
+                card_list.append(f"{v}_{suit}.gif")
+            for p in people:
+                card_list.append(f"{p}_{suit}.gif")           
         shuffle(card_list)
+        self.update_score(card_list[0])
 
         # your code goes here:
+        for card in card_list:
+            cards.put(card)
 
         return cards
 
@@ -107,7 +114,16 @@ class CardGame():
     # calculates the new score
     # takes a card argument of type
     def update_score(self, card):
-        pass  # replace this line by your code
+        print(card)
+        # print(card[0])
+        # if(card[0] == 'k'):
+        #     self.player_score = 13
+        # elif(card[0] == 'q'):
+        #     self.player_score = 12
+        # elif(card[0] == 'j'):
+        #     self.player_score = 11
+        # else: 
+        #     self.player_score = int(card[0])
 
     # this method is called when the "Done" button is clicked
     # it means that the game is over and we check the score
