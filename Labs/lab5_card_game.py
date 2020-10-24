@@ -46,7 +46,8 @@ class CardGame():
 
         # add elements into the frames
         self.open_card = Button(cards_frame)
-        the_card = PhotoImage(file=f'Labs\\cards\\{self.the_cards.get()}')
+        card_name = self.the_cards.get()
+        the_card = PhotoImage(file=f'Labs\\cards\\{card_name}')
         self.open_card.config(image=the_card)
         self.open_card.grid(row=0, column=0, padx=2, pady=2)
         self.open_card.photo = the_card
@@ -66,6 +67,7 @@ class CardGame():
 
         self.score_label = Label(score_frame, text="Your score: " + str(self.player_score), justify=LEFT)
         self.score_label.pack()
+        self.update_score(card_name)
 
         root.mainloop()
 
@@ -90,7 +92,7 @@ class CardGame():
             for p in people:
                 card_list.append(f"{p}_{suit}.gif")           
         shuffle(card_list)
-        self.update_score(card_list[0])
+        
 
         # your code goes here:
         for card in card_list:
@@ -115,15 +117,20 @@ class CardGame():
     # takes a card argument of type
     def update_score(self, card):
         print(card)
-        # print(card[0])
-        # if(card[0] == 'k'):
-        #     self.player_score = 13
-        # elif(card[0] == 'q'):
-        #     self.player_score = 12
-        # elif(card[0] == 'j'):
-        #     self.player_score = 11
-        # else: 
-        #     self.player_score = int(card[0])
+        if(card[0] == 'k'):
+            self.player_score += 10
+        elif(card[0] == 'q'):
+            self.player_score += 10
+        elif(card[0] == 'j'):
+            self.player_score += 10
+        else: 
+            self.player_score += int(card[0])
+
+        self.score_label.config(text="Your score: " + str(self.player_score) )
+        self.score_label.update_idletasks()
+
+
+        
 
     # this method is called when the "Done" button is clicked
     # it means that the game is over and we check the score

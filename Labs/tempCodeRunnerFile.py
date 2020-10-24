@@ -1,1 +1,1 @@
-c
+self.update_score(the_card)
