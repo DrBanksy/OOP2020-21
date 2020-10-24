@@ -1,1 +1,1 @@
-self.update_score(the_card)
+s the display

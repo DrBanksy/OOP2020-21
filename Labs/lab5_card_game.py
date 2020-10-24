@@ -52,11 +52,12 @@ class CardGame():
         self.open_card.grid(row=0, column=0, padx=2, pady=2)
         self.open_card.photo = the_card
 
-        closed_deck = Button(cards_frame)
+        closed_deck = Button(cards_frame, command=self.pick_card)
         closed_card = PhotoImage(file='Labs\\cards\\closed_deck.gif')
         closed_deck.config(image=closed_card)
         closed_deck.grid(row=0, column=1, padx=2, pady=2)
         closed_deck.photo = closed_card
+        
 
         done_button = Button(button_frame, text="I'm done!")
         done_button.grid(row=0, column=0, pady=12)
@@ -105,7 +106,14 @@ class CardGame():
     # updates the display
     # updates the score
     def pick_card(self):
-        pass  # replace this line by your code
+        new_card = self.the_cards.get()
+        new_image = PhotoImage(file=f'Labs\\cards\\{new_card}')
+        self.open_card.config(image=new_image)
+        self.open_card.photo = new_image
+
+        self.update_score(new_card)
+
+        self.open_card.update_idletasks()
 
     # contains the logic to compare if the score
     # is smaller, greater or equal to 21
