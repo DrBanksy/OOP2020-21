@@ -64,14 +64,7 @@
 # all_favourites = other_favourites.union(kitchen_favourites)
 # print(all_favourites)
 
-from queue import Queue
-line = Queue(maxsize=3)
-line.put(1)
-line.put(2)
-line.put(3)
 
-if line.full():
-   print("yes, line is full")
 
 # print(line.empty())
 
@@ -93,15 +86,34 @@ if line.full():
 # print(line.empty())
 
 # for sorting needs to be cast into list first
-line_list = []
-for i in range(1,4):
+
+from queue import Queue
+line = Queue(maxsize=10)
+line.put(8)
+line.put(23)
+line.put(18)
+line.put(4)
+
+
+line_list=[]
+for i in range (1, 5):
    line_list.append(line.get())
-line_list.sort(reverse=True)
+line_list.sort()
 print(line_list)
 
-# move back to queue
 for number in line_list:
    line.put(number)
 
-while not line.empty():
-   print(line.get())
+print(line.get())
+# line_list = []
+# for i in range(1,4):
+#    line_list.append(line.get())
+# line_list.sort(reverse=True)
+# print(line_list)
+
+# # move back to queue
+# for number in line_list:
+#    line.put(number)
+
+# while not line.empty():
+#    print(line.get())
