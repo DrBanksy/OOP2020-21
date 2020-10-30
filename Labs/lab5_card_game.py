@@ -115,7 +115,7 @@ class CardGame():
             for v in range(1,11):
                 card_list.append(f"{v}_{suit}.gif")
             for p in people:
-                card_list.append(f"{p}_{suit}.gif")           
+                card_list.append(f"{p}_{suit}.gif")         
         shuffle(card_list)
         
 
@@ -136,22 +136,12 @@ class CardGame():
         new_image = PhotoImage(file=f'Labs\\cards\\{self.new_card}')
         self.open_card.config(image=new_image)
         self.open_card.photo = new_image
-        
 
         self.update_score(self.new_card)
 
         self.open_card.update_idletasks()
 
-        
-
         self.check_scores()
-
-        
-
-        
-
-        
-        
 
         
 
@@ -159,7 +149,7 @@ class CardGame():
     # is smaller, greater or equal to 21
     # sets a label
     def check_scores(self):
-        print("test")
+
         score = self.player_score
         if(score > 21 ):
             self.game_losses += 1
@@ -182,8 +172,6 @@ class CardGame():
             self.score_label.update_idletasks()
             self.closed_deck.config(state=DISABLED)
             self.done_button.config(state=DISABLED)
-
-            
             
 
     # calculates the new score
@@ -198,6 +186,12 @@ class CardGame():
             self.player_score += 10
         elif(card[2] == '_'):
             self.player_score += 10
+        #checking for T card
+        elif(card[0] == '1'):
+            if(self.player_score <= 10):
+                self.player_score += 11
+            else:
+                self.player_score += 1
         else: 
             self.player_score += int(card[0])
 
