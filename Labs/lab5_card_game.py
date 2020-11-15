@@ -4,13 +4,15 @@
 # date: Oct 2020
 # purpose: Lab 5 - GUI and card game using queue
 
-from tkinter import *
+from tkinter import * 
 
 # to use the queue FIFO
 from queue import Queue
 
 # to use the shuffle for shuffling the cards
 from random import shuffle
+
+
 
 
 class CardGame():
@@ -21,6 +23,7 @@ class CardGame():
         # shuffle the cards before first use
         # variable for holding the score
         self.player_score = 0
+        self.dealer_score = 0
         self.game_losses = 0
         self.game_wins = 0
         self.count = 0
@@ -32,7 +35,7 @@ class CardGame():
     # initialises the GUI window
     def init_window(self):
         root = Tk()
-        root.geometry("400x400")
+        root.geometry("550x400")
         root.title("Card Game")
 
         master_frame = Frame(master=root)
@@ -52,7 +55,7 @@ class CardGame():
 
         # add elements into the frames
         
-
+        #player
         self.open_card = Button(cards_frame)
         self.card_name = self.the_cards.get()
         self.the_card = PhotoImage(file=f'Labs\\cards\\{self.card_name}')
@@ -60,16 +63,20 @@ class CardGame():
         self.open_card.grid(row=0, column=0, padx=50, pady=2)
         self.open_card.photo = self.the_card
 
+        #player
         self.last_card = Button(cards_frame)
         last_card_pic = PhotoImage(file='Labs\\cards\\closed_deck.gif')
         self.last_card.config(image=last_card_pic)
         self.last_card.grid(row=1, column=0, padx=50, pady=2)
         self.last_card.photo = last_card_pic
         
+       
+
+
         self.closed_deck = Button(cards_frame, state='normal')
         closed_card = PhotoImage(file='Labs\\cards\\closed_deck.gif')
         self.closed_deck.config(image=closed_card)
-        self.closed_deck.grid(row=0, column=1, padx=2, pady=2)
+        self.closed_deck.grid(row=0, column=2, padx=2, pady=2)
         self.closed_deck.photo = closed_card
         self.closed_deck['command'] = self.pick_card
         
@@ -81,9 +88,11 @@ class CardGame():
         exit_button = Button(button_frame, text="Exit", command=self.game_exit)
         exit_button.grid(row=2, column=0, pady=13)
 
+        #player
         self.score_label = Label(score_frame, text="Your score: " + str(self.player_score), justify=LEFT)
         self.score_label.pack()
 
+        #player
         self.wins_label = Label(game_frame, text= "Wins: 0", justify=LEFT)
         self.wins_label.pack()
         self.losses = Label(game_frame, text= "Losses: 0", justify=LEFT)
@@ -117,6 +126,7 @@ class CardGame():
             for p in people:
                 card_list.append(f"{p}_{suit}.gif")         
         shuffle(card_list)
+       
         
 
         # your code goes here:
@@ -138,9 +148,7 @@ class CardGame():
         self.open_card.photo = new_image
 
         self.update_score(self.new_card)
-
         self.open_card.update_idletasks()
-
         self.check_scores()
 
         
