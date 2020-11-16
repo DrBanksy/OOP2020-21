@@ -228,3 +228,36 @@
 # a = A()
 # print(a.__class__)
 # print(inspect.getmro(A))
+
+# class Employee:
+
+#  def message(self):
+#    print('This message is from Employee Class')
+
+
+# class Department(Employee):
+
+#  def message(self):
+#    print('This Department class is inherited from Employee')
+#    # if you want to also use functionality from the parent
+#    # class's def message, you can use is via
+#    # super().message()
+
+
+# emp = Employee()
+# emp.message()
+
+# print('------------')
+# dept = Department()
+# dept.message()
+
+class A:
+  pass
+
+class B(A):
+  pass
+
+a= A()
+b= B()
+
+print(isinstance(b, A))

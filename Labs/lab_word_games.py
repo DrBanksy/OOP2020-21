@@ -6,90 +6,62 @@
 
 # base class
 class WordGames:
-    """
-    Class to represent the word game's base class.
-    Methods and attributes that every type of word
-    game should have are defined here.
-    ...
-    Attributes:
-    -----------
-        __my_words : str
-        Read from user input and identifies the word
-        or sentence that a user has inputted.
 
-    Methods:
-    --------
-        the_words:
-            Property getter method that returns
-            the value of the user inputted word
-            or sentence
-
-        word_play:
-            Contains logic for playing the game.
-            Child classes should override this
-            method in order to implement their own
-            game logic.
-    """
     def __init__(self):
-        """
-        Constructs the necessary attributes for the
-        WordGame object.
-
-        Parameters: None.
-        -----------
-
-        Instance variables:
-        -------------------
-            __my_words : str
-                Variable that holds the user inputted word or
-                sentence. Set to enforced encapsulation via
-                name mangling.
-        """
         self.__my_words = input("Please enter a word or sentence: ")
 
     @property
     def the_words(self):
-        """
-        Property method to return the value of the user
-        inputted word or sentence.
-
-        Parameters: None.
-        -----------
-
-        Returns:
-        ________
-            __my_words : str
-                The value of the word or sentence that has
-                been inputted by a user.
-        """
         return self.__my_words
 
     def word_play(self):
-        """
-        Plays the game. The base class version of playing
-        the game simply prints the value that has been
-        inputted.
-
-        Parameters: None.
-        -----------
-
-        Returns: None.
-        --------
-        """
         print("User input was: "+self.the_words)
 
 class WordDuplication(WordGames): # you implement this and provide docstrings
-    pass
+    def word_play(self):
+        print("User input doubled: ")
+        print(self.the_words + ' ' + self.the_words)
+
 
 class WordScramble(WordGames): # you implement this and provide docstrings
-    pass
+    def word_play(self):
+        users_sentence = list(self.the_words.split())   
+        for word in users_sentence:
+            if (len(word) <= 3):
+                print(word, end=" ")
+            else:
+                complete_word = word
+                new_word = word[1:-1]
+                
+                letters = list(new_word.lower())
+                i = 0
+                while i < len(letters)-1:
+                        if i == len(letters)-1:
+                            break
+
+                        if letters[-1] == '.' or ',':
+                            if i < len(letters)-2:
+                                temp = letters[i]
+                                letters[i] = letters[i+1]
+                                letters[i+1] = temp
+                                i+=1
+                            else:
+                                break
+                        else:
+                            temp = letters[i]
+                            letters[i] = letters[i+1]
+                            letters[i+1] = temp
+                            i+=1
+                starting_letter = complete_word[0]
+                ending_letter = complete_word[-1]
+                letters = [''.join(letters)]
+                new_word = starting_letter + letters[0] + ending_letter
+                print(new_word, end = " ")    
 
 
-# prints the docstrings info
-# if this class was a python module
-print(WordGames.__doc__)
-
-# Create an instances of the classes here:
-wg = WordGames()
-wg.word_play()
-
+# wg = WordGames()
+# wg.word_play()
+# wd = WordDuplication()
+# wd.word_play()
+scramble = WordScramble()
+scramble.word_play()
