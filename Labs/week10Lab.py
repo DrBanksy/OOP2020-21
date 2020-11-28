@@ -1,5 +1,9 @@
 from abc import ABC, abstractmethod
 import sys
+from numpy import random
+
+#author: Cormac Smith
+#date: 28/11/2020
 
 # TODO
 # look at static methods
@@ -19,6 +23,7 @@ class MathsGame(ABC):
     def __init__(self):
         print("Welcome to the maths game")
     
+    @abstractmethod
     def play_game(self):
         pass
     
@@ -95,7 +100,51 @@ class Fibonacci(MathsGame):
         return ans
 
         
-
-
+class GuessTheNum(MathsGame):
+    def __init__(self):
+        super().__init__()
+        # generate array 5 random numbers from 0-10
+        self.play_game()
     
-play = Fibonacci()
+    @staticmethod
+    def generate_random_num():
+       return random.randint(10)
+
+    @property
+    def user_input(self):
+        pass
+
+    @property
+    def random_num(self):
+        return self.__random_num
+    
+    def play_game(self):
+        self.__limit = 2
+        self.__random_num = self.generate_random_num()
+
+        while(self.__limit != 0):
+            user_guess = int(input("Guess a number between 0-10: "))
+            if(user_guess != self.random_num):
+                print("wrong!!")
+                self.__limit = self.__limit - 1
+            else:
+                print("Congrats you guessed correctly !!!")
+                break
+        
+        if(self.__limit == 0):
+            print("Your out of guesses")
+            print("Play again: Y/N")
+            choice = input("")
+
+            if(choice == 'Y' or choice == 'y'):
+                self.play_game()
+
+            elif(choice == 'N' or choice == 'n'):
+                sys.exit()
+
+
+ 
+
+
+play = GuessTheNum() 
+# play = Fibonacci()
