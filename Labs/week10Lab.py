@@ -33,7 +33,7 @@ class Fibonacci(MathsGame):
         super().__init__()
         self.__correct_guesses = 0
         self.play_game()
-        
+
     @property
     def user_input(self):
         return self.__choice
@@ -73,7 +73,7 @@ class Fibonacci(MathsGame):
                 print(first_num)
             else:
                 while(count < terms):
-                    next_num = first_num + second_num
+                    next_num = self.calculate_next(first_num, second_num)
                     first_num = second_num
                     second_num = next_num
                     self.fibonacci_nums.append(first_num)
@@ -89,11 +89,13 @@ class Fibonacci(MathsGame):
                     count += 1
          
 
+    @staticmethod
+    def calculate_next(first_num, second_num):
+        ans = first_num + second_num
+        return ans
 
+        
 
 
     
-    
-
-
 play = Fibonacci()
