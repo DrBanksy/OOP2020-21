@@ -64,7 +64,7 @@ class Fibonacci(MathsGame):
                 # TODO display how many fibonacci were displayed correctly
                 print(self.correct_guesses)
                 print("exiting...")
-                sys.exit()
+                start.display_menu()
 
             terms  = int(input("How many terms: "))
             count = 0
@@ -73,7 +73,7 @@ class Fibonacci(MathsGame):
 
             if(terms <= 0):
                 print("Must be greater than 0")
-                sys.exit()
+                self.play_game()
             elif(terms == 1):
                 print(first_num)
             else:
@@ -123,13 +123,24 @@ class GuessTheNum(MathsGame):
         self.__random_num = self.generate_random_num()
 
         while(self.__limit != 0):
-            user_guess = int(input("Guess a number between 0-10: "))
+            try:
+                user_guess = int(input("Guess a number between 0-10: "))
+            except ValueError:
+                print("Not a valid guess")
+                self.play_game()
             if(user_guess != self.random_num):
                 print("wrong!!")
                 self.__limit = self.__limit - 1
             else:
                 print("Congrats you guessed correctly !!!")
-                break
+                print("Play again: Y/N")
+                choice = input("")
+
+                if(choice == 'Y' or choice == 'y'):
+                    self.play_game()
+
+                elif(choice == 'N' or choice == 'n'):
+                    start.display_menu()                
         
         if(self.__limit == 0):
             print("Your out of guesses")
@@ -140,11 +151,25 @@ class GuessTheNum(MathsGame):
                 self.play_game()
 
             elif(choice == 'N' or choice == 'n'):
-                sys.exit()
+                start.display_menu()
+            
+class Menu:
+    def display_menu(self):
+        print("Pick a game")
+        print("1) Fibonacci ")
+        print("2) Guessing game")
+        try:
+            choice = int(input("Choose your game: "))
+        except ValueError:
+            print("Not a valid option")
+            start.display_menu()
 
+        if(choice == 2):
+            game2 = GuessTheNum()
+        elif(choice == 1):
+            game1 = Fibonacci()
+        
 
- 
-
-
-play = GuessTheNum() 
+start = Menu()
+start.display_menu()
 # play = Fibonacci()
