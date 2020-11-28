@@ -1,0 +1,1 @@
+rint(r1.student_object_property)
