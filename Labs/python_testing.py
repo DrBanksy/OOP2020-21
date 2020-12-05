@@ -1,31 +1,23 @@
-# OOP Python Lab on Pyton Testing
-# File provided via github.
-# lab for testing
-# you should recognise some of this code from a
-# previous lab
-# author: B. Schoen-Phelan
-# date: 04-12-2020
+import unittest
 
-class TypesAndStrings:
+from week11 import TypesAndStrings
 
-    def last_char(self, value):
-        print("Originally entered: ", value)
-
-        # return the last character
-        return value[-1]
-
-    def first_char(self, value):
-        print("Originally entered: ", value)
-        if not isinstance(value, str):
-            raise TypeError("Wrong type, we need a string")
-
-        return value[0]
-
-    def replace_all_a(self, value):
-        print("Originally entered: ", value)
-        return value.replace('a','-')
-
-
-    def all_lower(self, value):
-        return value # issue here, should show up in testing
+class FirstTest(unittest.TestCase):
+    def setUp(self):
+        self.test = TypesAndStrings()
     
+    @unittest.expectedFailure
+    def test_last_char(self):
+        # self.assertRaises(TypeError, self.test.first_char, 5)
+        self.assertEqual(self.test.last_char('test'), 5)
+    
+    @unittest.expectedFailure
+    def test_first_char(self):
+        self.assertRaises(TypeError, self.test.first_char, 'hello')
+    
+    def test_replace_all_a(self):
+        self.assertEqual(self.test.replace_all_a('tata'), 't-t-')
+
+
+if __name__ == "__main__":
+    unittest.main()
