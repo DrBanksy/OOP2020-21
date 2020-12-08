@@ -101,48 +101,61 @@
 #     print("Could not set second name")
 
 
-class Person:
- def __init__(self, f_name, l_name):
-   self.__first_name = f_name
-   self.__last_name = l_name
+# class Person:
+#  def __init__(self, f_name, l_name):
+#    self.__first_name = f_name
+#    self.__last_name = l_name
 
- @property
- def first_name(self):
-   # include validation if needed, maybe we return names
-   # only on a Wednesday, or some business logic like that
-   return self.__first_name
+#  @property
+#  def first_name(self):
+#    # include validation if needed, maybe we return names
+#    # only on a Wednesday, or some business logic like that
+#    return self.__first_name
 
- @property
- def last_name(self):
-   return self.__last_name
+#  @property
+#  def last_name(self):
+#    return self.__last_name
 
- @last_name.setter
- def last_name(self, value):
-   # imagine some validation here
-   self.__last_name = value
+#  @last_name.setter
+#  def last_name(self, value):
+#    # imagine some validation here
+#    self.__last_name = value
 
- def print_name(self):
-   print(self.first_name, self.last_name)
+#  def print_name(self):
+#    print(self.first_name, self.last_name)
 
 
-class Student(Person):
-  def __init__(self, s_id, f_name, l_name):
-    super().__init__(f_name, l_name)
-    self.__student_id = s_id
+# class Student(Person):
+#   def __init__(self, s_id, f_name, l_name):
+#     super().__init__(f_name, l_name)
+#     self.__student_id = s_id
 
-  @property
-  def get_student_id(self):
-    return self.__student_id
+#   @property
+#   def get_student_id(self):
+#     return self.__student_id
 
-  def get_full_details(self):
-    return super().first_name, super().last_name, self.get_student_id
+#   def get_full_details(self):
+#     return super().first_name, super().last_name, self.get_student_id
  
-bryan = Student(1234, "Bryan", "Duggan")
-print(bryan.get_full_details())
-bryan.last_name = "smith"
-print(bryan.get_full_details())
+# bryan = Student(1234, "Bryan", "Duggan")
+# print(bryan.get_full_details())
+# bryan.last_name = "smith"
+# print(bryan.get_full_details())
+
+# class A:
+
+#     pass
 
 
+# class B(A):
 
+#     pass 
 
+# a = A()
+
+# b = B()
+
+# print(type(b)==B)
+
+# print(isinstance(b,A))
 
