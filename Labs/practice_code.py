@@ -361,3 +361,34 @@
 # print(demo1.instance_atrribute)
 # demo1.instance_atrribute.append('a')
 # print(demo1.instance_atrribute)
+
+
+
+# static and class methods
+
+# class Student:
+#     COURSES = ['Maths', 'Programming']
+
+#     def __init__(self):
+#         self.instance_attribute = 5
+    
+#     @classmethod
+#     def class_method(cls):
+#         # accessing class attributes fine
+#         for course in cls.COURSES:
+#             print(course)
+        
+#         # trying to access instance attribute DOESNT WORK
+#         # print(f"{cls.instance_attribute}")
+
+#     @staticmethod
+#     def calculate_student_fee(num1):
+#         pass
+
+
+
+# stu1 = Student()
+# stu1.class_method()
+    
+
+    
