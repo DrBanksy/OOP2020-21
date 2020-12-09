@@ -4,7 +4,7 @@
 # date: 08-10-2019
 # purpose: Lab 3
 import string
-import scapy
+
 
 
 class WordScramble:
@@ -25,6 +25,7 @@ class WordScramble:
         for word in users_sentence:
             if (len(word) <= 3):
                 print(word, end=" ")
+                return word
             else:
                 complete_word = word
                 new_word = word[1:-1]
@@ -53,6 +54,7 @@ class WordScramble:
                 letters = [''.join(letters)]
                 new_word = starting_letter + letters[0] + ending_letter
                 print(new_word, end = " ")
+                return new_word
                 
                 
 
@@ -76,6 +78,6 @@ class WordScramble:
         # do just words first, then you can move on to work on
         # punctuation
 
-word_scrambler = WordScramble()
-word_scrambler.scramble()
+# word_scrambler = WordScramble()
+# word_scrambler.scramble()
 
