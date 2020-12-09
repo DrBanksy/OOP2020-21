@@ -101,6 +101,9 @@
 #     print("Could not set second name")
 
 
+#INHERITANCE
+
+
 # class Person:
 #  def __init__(self, f_name, l_name):
 #    self.__first_name = f_name
@@ -142,6 +145,9 @@
 # bryan.last_name = "smith"
 # print(bryan.get_full_details())
 
+
+#INHERITANCE
+
 # class A:
 
 #     pass
@@ -156,6 +162,202 @@
 # b = B()
 
 # print(type(b)==B)
-
 # print(isinstance(b,A))
 
+
+#ABSTRACT CLASSES
+
+
+# from abc import ABC, abstractmethod
+
+# class Polygon(ABC):
+
+#     @abstractmethod
+#     def no_of_sides(self):
+#         pass
+
+#     def what_am_i(self):
+#         print("I am a parent polygon")
+    
+#     @property
+#     @abstractmethod
+#     def length(self):
+#         pass
+
+
+# class Triangle(Polygon):
+#     def __init__(self):
+#         self.__x = 0
+
+#     def no_of_sides(self):
+#         print('I have three sides')
+
+#     def what_am_i(self):
+#         print('I am a child triangle')
+#         super().what_am_i()
+    
+#     @property
+#     def length(self):
+#         return self.__x
+    
+#     @length.setter
+#     def length(self, value):
+#         self.__x = value
+
+
+# t= Triangle()
+# t.what_am_i()
+# t.length = 5
+# print(t.length)
+
+
+
+#POLYMORPHISM
+
+# class Cat:
+#     def makeSound(self):
+#         print('meow')
+    
+# class Dog:
+#     def makeSound(self):
+#         print('wouff')
+
+# def speak(animal):
+#     animal.makeSound()
+
+# cat = Cat()
+# dog = Dog()
+
+# speak(cat)
+
+
+#COMPOSITION
+
+# class Salary:
+
+#    def __init__(self, pay, bonus):
+#        self.__pay = pay
+#        self.__bonus = bonus
+
+#    def __str__(self):
+#        return f"I earn {self.pay_prop} and my bonus is: {self.bonus_prop}"
+
+#    @property
+#    def pay_prop(self):
+#        return self.__pay
+
+#    @pay_prop.setter
+#    def pay_prop(self, value):
+#        self.__pay = value
+
+#    @property
+#    def bonus_prop(self):
+#        return self.__bonus
+
+#    @bonus_prop.setter
+#    def bonus_prop(self, value):
+#        self.__bonus = value
+
+#    # returns a calculation
+#    def annual_salary(self):
+#        return (self.pay_prop * 12) + self.bonus_prop
+
+
+# # composition:
+
+# class Employee:
+#    def __init__(self, name, age, pay, bonus):
+#        self.__name = name
+#        self.__age = age
+#        self.__salary_object = Salary(pay, bonus)
+
+#    @property
+#    def age_prop(self):
+#        return self.__age
+
+#    @age_prop.setter
+#    def age_prop(self, value):
+#        self.__age = value
+
+#    @property
+#    def name_prop(self):
+#        return self.__name
+
+#    # if you don't provide a setter property, then this
+#    # variable cannot be set!
+
+#    @property
+#    def salary_prop(self):
+#        return self.__salary_object
+
+#    def total_salary(self):
+#        return self.salary_prop.annual_salary()
+
+
+# anna = Employee("Anna", 25, 2500, 10000)
+# print(anna.total_salary())
+# print(anna.salary_prop)  
+
+
+
+# STATIC AND CLASSMETHODS
+
+# class DifferentMethodsClass:
+#    class_attribute = "This is a class attribute"
+
+#    def __init__(self):
+#        self.instance_attributes = "This is an instance attribute"
+
+#    def instance_method(self):  # usual argument self
+#        print('instance method called', self)
+
+#    @classmethod
+#    def class_method(cls):
+#        print('class method called', cls)
+#        # print(self.instance_attributes)  # this will 
+#   # fail
+#        print("class attribute: ", cls.class_attribute)
+
+#    @staticmethod
+#    def static_method():
+#        print('static method called')
+
+
+
+# demo = DifferentMethodsClass()
+# demo.instance_method()
+# demo.class_method()  
+# demo.static_method()
+
+# DifferentMethodsClass.class_method()  
+# DifferentMethodsClass.static_method()  
+# # DifferentMethodsClass.instance_method()  # error
+
+
+# class A:
+#     CLASS_ATTRIBUTE = ["a", "b", "c"]
+
+#     def __init__(self):
+#         self.instance_atrribute = ["x", "y"]
+    
+#     def instance_method(self):
+#         print('This is an instance method')
+    
+#     @classmethod
+#     def class_method(cls):
+#         print('this is a class method')
+    
+#     @staticmethod
+#     def static_method():
+#         print('static method')
+    
+# demo1 = A()
+# demo2 = A()
+
+# print(demo1.CLASS_ATTRIBUTE)
+# demo2.CLASS_ATTRIBUTE.append('x')
+# print(demo1.CLASS_ATTRIBUTE)
+
+# print(demo1.instance_atrribute)
+# demo1.instance_atrribute.append('a')
+# print(demo1.instance_atrribute)

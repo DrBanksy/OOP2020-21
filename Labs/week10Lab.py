@@ -11,12 +11,16 @@ from numpy import random
 
 class MathsGame(ABC):
     '''
+    this abstract class defines a foundation for each maths game
+
     Methods:
-        init:
+        __init__ : abstract method
             prints a welcome message
 
-        user_input: property    
+        user_input: abstract property    
             pass
+    
+        play_game : abstract method
 
     '''
     @abstractmethod
@@ -34,6 +38,35 @@ class MathsGame(ABC):
 
 
 class Fibonacci(MathsGame):
+    '''
+    This class inherits methods/properties from the abstract class
+    MathsGame. 
+
+    Attributes:
+        __correct_guesses -> keeps tracks of users correct guesses
+        __choice -> stores users choice: either 1 or 2
+    
+    Methods:
+        __init__ : 
+        calls parent init
+        sets correct guesses to 0
+
+        user_input : property
+        returns users input
+
+        correct_guesses : property
+        returns correct guesses made by user
+
+        play_game(self):
+        handles the gameplay logic
+        makes call to a static method to calc next num
+
+        calculate_next(first_num, second_num) : static method
+        Takes two numbers and returns the next number in the 
+        fibonacci sequence
+
+
+    '''
     def __init__(self):
         super().__init__()
         self.__correct_guesses = 0
@@ -61,8 +94,7 @@ class Fibonacci(MathsGame):
                 self.play_game()
      
             if(self.__choice == 2 ):
-                # TODO display how many fibonacci were displayed correctly
-                print(self.correct_guesses)
+                print('Correct guesses: ', self.correct_guesses)
                 print("exiting...")
                 start.display_menu()
 
@@ -101,9 +133,34 @@ class Fibonacci(MathsGame):
 
         
 class GuessTheNum(MathsGame):
+    '''
+    This class inherits from MathsGame. User has two attempts at guessing a random
+    number between 0-10 inclusive
+
+    attributes:
+        __limit 
+        sets the amount of attempts we give the user
+
+    method:
+        __init__:
+        makes call to super
+
+        generate_random_num : static methods
+        returns a random integer
+
+        random_num : property
+        returns the random number stored in __random
+
+        user_input : property
+        returns users input
+
+        play_game :
+        handles gameplay logic
+        makes call to static method generate_random_num
+
+    '''
     def __init__(self):
         super().__init__()
-        # generate array 5 random numbers from 0-10
         self.play_game()
     
     @staticmethod
@@ -135,7 +192,7 @@ class GuessTheNum(MathsGame):
                 print("Congrats you guessed correctly !!!")
                 print("Play again: Y/N")
                 choice = input("")
-
+            
                 if(choice == 'Y' or choice == 'y'):
                     self.play_game()
 
@@ -154,6 +211,20 @@ class GuessTheNum(MathsGame):
                 start.display_menu()
             
 class Menu:
+    '''
+    Class which provides a menu for the maths games. if option 1 is picked
+    we create a Fibonacci object. If 2 is picked we create GuessTheNum object
+
+    Attributes:
+        choice:
+            stored the users choice
+        
+        methods:
+            display_menu(self):
+                presents the user with options and creates and runs game
+                specfied by the user
+            
+    '''
     def display_menu(self):
         print("Pick a game")
         print("1) Fibonacci ")
