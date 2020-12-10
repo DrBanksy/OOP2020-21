@@ -386,6 +386,19 @@
 
 # from abc import ABC, abstractmethod
 # class Person(ABC):
+#     '''
+#     This abstract class defines the foundation of a person
+
+#     Methods:
+#         __init__: abstract method
+
+#         get_name: abstract property
+
+#         get_pay : abstract property
+
+#         get_hours : abstract property
+
+#     '''
 #     @abstractmethod
 #     def __init__(self, name, pay, hours):
 #         pass
@@ -406,11 +419,36 @@
 #         pass  
 
 
-# class Admin:
+# class Admin(Person):
+#     '''
+#     This class is for the admin and it inherits from the abstract class
+#     Person
+
+#     Methods:
+
+#     __init__(self):
+#         takes in three parameters from the user
+#         name, pay and hours
+    
+#     get_name(self): property
+#         returns the name
+
+#     get_pay(self): property
+#         returns the pay
+    
+#     get_hours(self) : property
+#         returns the hours worked
+    
+#     calculate_salary(self):
+#         calculates the salary
+
+#     '''
+
 #     def __init__(self, name, pay, hours):
 #         self.__name = name 
 #         self.__pay = pay
 #         self.__hours = hours
+
     
 #     @property
 #     def get_name(self):
@@ -449,14 +487,22 @@
 #     def calculate_salary(self):
 #         return self.get_hours * self.get_pay
 
-# joe = Barber('Joe', 12.50, 7)
-# print(joe.calculate_salary())
-# ciara = Admin('Ciara', 13.50, 23)
-# print(ciara.calculate_salary())
+# # joe = Barber('Joe', 12.50, 7)
+# # print(joe.calculate_salary())
+# # ciara = Admin('Ciara', 13.50, 23)
+# # print(ciara.calculate_salary())
 
-# def print_salary(job):
-#     print(job.calculate_salary())
+# # def print_salary(job):
+# #     print(job.calculate_salary())
 
 
-# print_salary(ciara)
+# # print_salary(ciara)
     
+
+
+# importing from another file
+
+# from lab_registration_record import Student, RegistrationData
+
+# r1 = RegistrationData("123 fake street", 120, "undergraduate", "Barry", "Smith", "c19313793")
+# r1.student_information()
