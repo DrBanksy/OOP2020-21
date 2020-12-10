@@ -263,7 +263,9 @@
 #        return (self.pay_prop * 12) + self.bonus_prop
 
 
+
 # # composition:
+
 
 # class Employee:
 #    def __init__(self, name, age, pay, bonus):
@@ -301,6 +303,7 @@
 
 
 # STATIC AND CLASSMETHODS
+
 
 # class DifferentMethodsClass:
 #    class_attribute = "This is a class attribute"
@@ -361,3 +364,99 @@
 # print(demo1.instance_atrribute)
 # demo1.instance_atrribute.append('a')
 # print(demo1.instance_atrribute)
+
+
+
+# error checking
+
+# while(1):
+#     try:
+#         term = int(input('Input an integer please: '))
+#         break
+#     except ValueError as e:
+#         print('Not an int')
+#     except Exception as ve:
+#         print('Didnt know about this')
+# print('rest of program')
+
+
+
+
+# polymorphism, abstract
+
+# from abc import ABC, abstractmethod
+# class Person(ABC):
+#     @abstractmethod
+#     def __init__(self, name, pay, hours):
+#         pass
+    
+#     @property
+#     @abstractmethod
+#     def get_name(self):
+#         pass
+
+#     @property
+#     @abstractmethod
+#     def get_pay(self):
+#         pass
+
+#     @property 
+#     @abstractmethod     
+#     def get_hours(self):
+#         pass  
+
+
+# class Admin:
+#     def __init__(self, name, pay, hours):
+#         self.__name = name 
+#         self.__pay = pay
+#         self.__hours = hours
+    
+#     @property
+#     def get_name(self):
+#         return self.__name 
+    
+#     @property
+#     def get_pay(self):
+#         return self.__pay
+    
+#     @property
+#     def get_hours(self):
+#         return self.__hours
+    
+#     def calculate_salary(self):
+#         return (self.get_hours * self.get_pay) + 500    
+
+
+# class Barber(Person):
+#     def __init__(self, name, pay, hours):
+#         self.__name = name 
+#         self.__pay = pay
+#         self.__hours = hours
+    
+#     @property
+#     def get_name(self):
+#         return self.__name 
+    
+#     @property
+#     def get_pay(self):
+#         return self.__pay
+    
+#     @property
+#     def get_hours(self):
+#         return self.__hours
+    
+#     def calculate_salary(self):
+#         return self.get_hours * self.get_pay
+
+# joe = Barber('Joe', 12.50, 7)
+# print(joe.calculate_salary())
+# ciara = Admin('Ciara', 13.50, 23)
+# print(ciara.calculate_salary())
+
+# def print_salary(job):
+#     print(job.calculate_salary())
+
+
+# print_salary(ciara)
+    
