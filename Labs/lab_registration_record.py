@@ -63,7 +63,7 @@ class RegistrationData:
         try:
             self.__student_object = Student(study_type, f_name, l_name)
         except Exception as e:
-            pass
+            print(e)
         self.__s_id = s_id
 
  
@@ -102,13 +102,13 @@ class RegistrationData:
         print("Registration fee: ", self.registration_fee_property)
 
 
-# r1 = RegistrationData("123 fake street", 120, "undergraduate", "Cormac", "Smith", "c19313793")
+r1 = RegistrationData("123 fake street", 120, "undergraduate", "Cormac", "Smith", "c19313793")
 # r1.student_information()
 
 # r1.student_id_property = "c19565656"
 # r1.student_information()
 
-# print(r1.student_object_property)
+print(r1.student_object_property)
 
 
 
