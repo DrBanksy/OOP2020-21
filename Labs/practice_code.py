@@ -231,7 +231,7 @@
 # speak(cat)
 
 
-#COMPOSITION
+#COMPOSITION -- part of relationship
 
 # class Salary:
 
@@ -506,3 +506,39 @@
 
 # r1 = RegistrationData("123 fake street", 120, "undergraduate", "Barry", "Smith", "c19313793")
 # r1.student_information()
+
+
+
+# non - local keyword
+
+# def outer():
+#     first_num = 0
+
+#     def inner():
+#         nonlocal first_num
+#         print(first_num)
+
+#     inner()
+
+# outer()
+
+
+# multi level inheritance
+
+# class A:
+#     def __init__(self):
+#         print('This is class A')
+
+# class B:
+#     def __init__(self):
+#         print('This is class B')
+    
+
+# class C(A, B):
+#     def __init__(self):
+#         print('This is class C')
+#         B.__init__(self)
+#         # super().__init__()
+
+# c1 = C()
+# print(C.__mro__)
